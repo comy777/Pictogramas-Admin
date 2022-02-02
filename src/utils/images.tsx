@@ -4,6 +4,7 @@ import {
   launchCamera,
   launchImageLibrary,
 } from 'react-native-image-picker';
+import {API_URL} from '@env';
 
 export const galeryLaunch = async () => {
   const resp: ImagePickerResponse = await launchImageLibrary({
@@ -44,7 +45,7 @@ export const savePhoto = async ({base64}: ImageResponse) => {
     file: base64Img,
     upload_preset: 'react-journal',
   };
-  const resp = await fetch('https://api.cloudinary.com/v1_1/djtqfpw2e/upload', {
+  const resp = await fetch(API_URL, {
     body: JSON.stringify(data),
     headers: {
       'content-type': 'application/json',
